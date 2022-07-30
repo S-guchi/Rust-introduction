@@ -1,7 +1,8 @@
 # Rust-introduction
 
 ↓これ読んだ
-https://speakerdeck.com/rmizuta3/pythonyuzaniyorurustru-men?slide=10
+- https://speakerdeck.com/rmizuta3/pythonyuzaniyorurustru-men?slide=10
+- https://qiita.com/notakaos/items/9f3ee8a3f3a0caf39f7b
 
 ## list型
 
@@ -76,3 +77,74 @@ Rustはガベージコレクション機能を持っていない。
 - 文字の型には3種類あって、String,&str,char型がある
 - 結合したいときはString&strとする必要がある。
 - String同士や、&str同士だと結合できない
+
+
+## 環境構築
+```
+# rustupインストールおよびrust環境のセットアップ 
+brew install rustup-init 
+rustup-init # シェルの再起動 
+exec $SHELL -l
+
+rustup --version
+```
+
+
+```
+# rustプロジェクトファイルの作成 
+cargo new hello_rust # ディレクトリの移動 
+cd hello_rust # Rustプログラムのコンパイルと実行 
+cargo run
+
+```
+Hello, world!
+
+
+パッケージの依存関係を自動で追加してくれるツール
+```
+cargo install cargo-edit
+```
+
+```
+# パッケージの追加 cargo add <パッケージ名> 
+cargo add <パッケージ名>@<バージョン指定> 
+# パッケージの追加(開発用) 
+cargo add <パッケージ名> --dev 
+# パッケージのアップグレード 
+cargo upgrade <パッケージ名> 
+# パッケージの削除 
+cargo rm <パッケージ名>
+```
+
+
+自動でコンパイルしてくれるツール
+```
+cargo install cargo-watch
+```
+
+`cargo-watch` の使い方ですが、ファイル変更検知した際に自動実行したいコマンドを `cargo watch -x` につづけて渡します。
+
+```
+# cargo check の自動実行 
+cargo watch -x check 
+# cargo test の自動実行 
+cargo watch -x test 
+# cargo run の自動実行 
+cargo watch -x run 
+# check, test, run の連続実行 
+cargo watch -x check -x test -x run 
+# cargoではないコマンドの自動実行 
+cargo watch -- echo Hello world
+```
+
+
+rustupdate
+```
+# 安定版のみアップデートする 
+rustup update stable
+```
+
+vscode でrustanalayzerを使うとき入れとかなきゃいけないやつ
+```
+rustup component add rls rust-src rust-analysis
+```
