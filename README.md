@@ -4,6 +4,9 @@
 - https://speakerdeck.com/rmizuta3/pythonyuzaniyorurustru-men?slide=10
 - https://qiita.com/notakaos/items/9f3ee8a3f3a0caf39f7b
 
+- 日本語の公式ブック、わかりやすい！
+- https://doc.rust-jp.rs/book-ja/ch02-00-guessing-game-tutorial.html
+
 ## list型
 
 rustは基本変数は不変
@@ -148,3 +151,25 @@ vscode でrustanalayzerを使うとき入れとかなきゃいけないやつ
 ```
 rustup component add rls rust-src rust-analysis
 ```
+
+## Cargoはセマンティックバージョニングを認識する
+- クレート X.Y.Z (Major.Minor.Patch) 
+- SemVerと呼ばれることもある
+- 0.8.3という数字は実際には^0.8.3の省略記法で、0.8.3以上0.9.0未満の任意のバージョンを意味する。
+>いう数字は実際には^0.8.3の省略記法で、0.8.3以上0.9.0未満の任意のバージョンを意味します。 Cargoはこれらのバージョンを、バージョン0.8.3と互換性のある公開APIを持つものとみなします。 この仕様により、この章のコードが引き続きコンパイルできるようにしつつ、最新のパッチリリースを取得できるようになります。 0.9.0以降のバージョンは、以下の例で使用しているものと同じAPIを持つことを保証しません。
+
+## Cargo.toml
+- `[dependencies]`セクションにクレートを追加したら
+- cargo buildする必要がある
+
+- クレートをアップデーとしたくなったら 
+- `[dependencies]`の値を手動でバージョン上げてcargo updateする
+- するとCargo.lockの値も変わる
+
+## cargo doc --open
+- 依存しているクレートのドキュメントを全部表示してくれるすごい機能
+- 使い方わからんクレートがあったらとりあえずこれ
+
+## Rustでは既に宣言されている変数を新たな宣言で被せることができる
+
+## match式のアンダースコアの_はすべての値を受け付ける
